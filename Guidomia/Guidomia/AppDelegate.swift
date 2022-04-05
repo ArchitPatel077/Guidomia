@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainView = CarSummaryViewController(nibName: nil, bundle: nil)
         nav.viewControllers = [mainView]
         window?.makeKeyAndVisible()
-        window?.backgroundColor = .orange
+        window?.backgroundColor = .systemBackground
         window?.rootViewController = nav
         
         UINavigationBar.appearance().barTintColor =  UIColor(named: "carOrangeColor")

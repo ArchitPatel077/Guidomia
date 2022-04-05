@@ -61,6 +61,7 @@ extension CarSummaryViewController {
             let firstFrame = CGRect(x: 20, y: 0, width: navigationBar.frame.width/2, height: navigationBar.frame.height)
             let firstLabel = UILabel(frame: firstFrame)
             firstLabel.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
+            firstLabel.textColor = .white
             firstLabel.text = "GUIDOMIA"
             
             navigationBar.addSubview(firstLabel)
