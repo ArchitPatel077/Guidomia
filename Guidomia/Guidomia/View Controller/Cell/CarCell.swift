@@ -20,6 +20,12 @@ class CarCell: UITableViewCell {
     let underlineView = UIView()
     let cellBackgroundView = UIView()
     
+    public var car: Cars? {
+        didSet {
+            displayCarList()
+        }
+    }
+    
     static let reuseID = "AccountSummaryCell"
     static let rowHeight: CGFloat = 170
     
@@ -112,5 +118,16 @@ extension CarCell {
             underlineView.widthAnchor.constraint(equalToConstant: 200),
             underlineView.heightAnchor.constraint(equalToConstant: 4)
         ])
+    }
+}
+
+
+extension CarCell {
+    
+    func displayCarList() {
+        carName.text = car?.carName()
+        carPrice.text = car?.carPrice()
+        carRating.text = car?.carRating()
+        carImage.image = car?.carImage()
     }
 }
