@@ -9,7 +9,7 @@ import UIKit
 
 class CarSummaryViewController: UIViewController {
     
-     let images = ["alpine_roadster", "BMW_330i", "Mercedez_benz_GLC", "Range_Rover"]
+   let images = ["alpine_roadster", "BMW_330i", "Mercedez_benz_GLC", "Range_Rover"]
     
     var tableView = UITableView()
 
@@ -67,7 +67,6 @@ extension CarSummaryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CarCell.reuseID, for: indexPath) as! CarCell
-            cell.textLabel?.text = images[indexPath.row]
             return cell
         }
     }
