@@ -16,7 +16,13 @@ class CarCell: UITableViewCell {
     let carPrice = UILabel()
     let carRating = UILabel()
     
+    let prosLabel = UILabel()
+    let prosList = UILabel()
+    let consLabel = UILabel()
+    let consList = UILabel()
+    
     let carListingStackView = UIStackView()
+    let carDetailsStackView = UIStackView()
     
     let underlineView = UIView()
     let cellBackgroundView = UIView()
@@ -30,7 +36,7 @@ class CarCell: UITableViewCell {
   
     // Reuse identifier for tableview cell
     static let reuseID = "AccountCell"
-    static let rowHeight: CGFloat = 300
+    static let rowHeight: CGFloat = 350
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -80,6 +86,43 @@ extension CarCell {
         carListingStackView.axis = .vertical
         carListingStackView.spacing = 7
         
+        // Pros Label
+        prosLabel.translatesAutoresizingMaskIntoConstraints = false
+        prosLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        prosLabel.textAlignment = .left
+        prosLabel.text = "Pros :"
+        prosLabel.textColor = UIColor(named: "carDarkGreyColor")
+        
+        // Pros List
+        prosList.translatesAutoresizingMaskIntoConstraints = false
+        prosList.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        prosList.textAlignment = .left
+        prosList.text = "Pro List"
+        prosList.textColor = .black
+        prosList.adjustsFontSizeToFitWidth = true
+        prosList.numberOfLines = 4
+        
+        // Cons Label
+        consLabel.translatesAutoresizingMaskIntoConstraints = false
+        consLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        consLabel.textAlignment = .left
+        consLabel.text = "Cons:"
+        consLabel.textColor = UIColor(named: "carDarkGreyColor")
+        
+        //Cons List
+        consList.translatesAutoresizingMaskIntoConstraints = false
+        consList.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        consList.textAlignment = .left
+        consList.text = "Con List"
+        consList.textColor = .black
+        consList.adjustsFontSizeToFitWidth = true
+        consList.numberOfLines = 4
+        
+        // Vertical stack for car pros and cons
+        carDetailsStackView.translatesAutoresizingMaskIntoConstraints = false
+        carDetailsStackView.axis = .vertical
+        carDetailsStackView.spacing = 2
+        
         // Underline view
         underlineView.translatesAutoresizingMaskIntoConstraints = false
         underlineView.backgroundColor = UIColor(named: "carOrangeColor")
@@ -93,8 +136,14 @@ extension CarCell {
         carListingStackView.addArrangedSubview(carPrice)
         carListingStackView.addArrangedSubview(carRating)
         
+        carDetailsStackView.addArrangedSubview(prosLabel)
+        carDetailsStackView.addArrangedSubview(prosList)
+        carDetailsStackView.addArrangedSubview(consLabel)
+        carDetailsStackView.addArrangedSubview(consList)
+        
         cellBackgroundView.addSubview(carImage)
         cellBackgroundView.addSubview(carListingStackView)
+        cellBackgroundView.addSubview(carDetailsStackView)
         
         contentView.addSubview(cellBackgroundView)
         contentView.addSubview(underlineView)
@@ -125,6 +174,12 @@ extension CarCell {
             carListingStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: carImage.trailingAnchor, multiplier: 2)
         ])
         
+        //CarDetailsStackView
+        NSLayoutConstraint.activate([
+            carDetailsStackView.topAnchor.constraint(equalToSystemSpacingBelow: carImage.bottomAnchor, multiplier: 2),
+            carDetailsStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 2)
+        ])
+        
         //underlineView
         NSLayoutConstraint.activate([
             underlineView.topAnchor.constraint(equalToSystemSpacingBelow: cellBackgroundView.bottomAnchor, multiplier: 2),
@@ -145,6 +200,12 @@ extension CarCell {
         carPrice.text = car?.carPrice()
         carRating.text = car?.carRating()
         carImage.image = car?.carImage()
+        
+        guard let carProsList = car?.prosList.filter({$0.isEmpty == false}) else {return}
+        prosList.attributedText = NSAttributedString().displayBulletedText(for:carProsList)
+        print(NSAttributedString().displayBulletedText(for: carProsList))
+        guard let carConsList = car?.consList.filter({$0.isEmpty == false}) else {return}
+        consList.attributedText = NSAttributedString().displayBulletedText(for: carConsList)
     }
 }
 

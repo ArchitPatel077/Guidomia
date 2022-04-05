@@ -38,6 +38,7 @@ extension CarSummaryViewController {
         tableView.rowHeight = CarCell.rowHeight
         tableView.tableFooterView = UIView()
         self.tableView.separatorColor = .clear
+        tableView.backgroundColor = .none
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
@@ -59,7 +60,6 @@ extension CarSummaryViewController {
             let firstFrame = CGRect(x: 20, y: 0, width: navigationBar.frame.width/2, height: navigationBar.frame.height)
             let firstLabel = UILabel(frame: firstFrame)
             firstLabel.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
-            firstLabel.textColor = .white
             firstLabel.text = "GUIDOMIA"
             
             navigationBar.addSubview(firstLabel)
@@ -72,8 +72,8 @@ extension CarSummaryViewController {
 extension CarSummaryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if selectedIndex == indexPath { return 300}
-        return 160
+        if selectedIndex == indexPath { return 350}
+        return 140
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,6 +83,8 @@ extension CarSummaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CarCell.reuseID, for: indexPath) as! CarCell
         cell.car = viewModel.data?[indexPath.row]
+        cell.selectionStyle = .none
+        cell.animate()
         return cell
         }
     }
@@ -92,6 +94,7 @@ extension CarSummaryViewController: UITableViewDataSource {
 extension CarSummaryViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         selectedIndex = indexPath
         
         tableView.beginUpdates()
