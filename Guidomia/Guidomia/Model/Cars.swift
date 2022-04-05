@@ -17,6 +17,7 @@ struct Cars: Codable {
     var prosList: [String]
     var rating: Int
     
+    // Method to display images
     func carImage() -> UIImage {
         
         switch CarImages(rawValue: make) {
@@ -33,14 +34,17 @@ struct Cars: Codable {
         }
     }
     
+    // Method to display car name
     func carName() -> String {
         return make + " " + model
     }
     
+    // Method to display car price
     func carPrice() -> String {
         return "Price: " + String(customerPrice/1000) + "k"
     }
     
+    // Method to convert number of star into custom star icon
     func carRating() -> String {
         var star = "★"
         let space = "" + star

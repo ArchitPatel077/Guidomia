@@ -7,6 +7,7 @@
 
 import UIKit
 
+// enum to display images
 public enum CarImages: String {
     case rangeRover = "Land Rover"
     case alpine     = "Alpine"

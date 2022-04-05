@@ -13,6 +13,8 @@ class CarSummaryViewController: UIViewController {
     
     var tableView = UITableView()
     var viewModel = CarViewModel()
+    
+    var selectedIndex: IndexPath = IndexPath(row: 0, section: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,8 @@ class CarSummaryViewController: UIViewController {
         setupNavigationBar()
     }
 }
+
+// MARK: - Custom methods to setup tableview and navigationBar
 
 extension CarSummaryViewController {
     private func setup(){
@@ -63,7 +67,14 @@ extension CarSummaryViewController {
     }
 }
 
+// MARK: - TableView DataSource Methods
+
 extension CarSummaryViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if selectedIndex == indexPath { return 300}
+        return 160
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.data?.count ?? 0
@@ -76,9 +87,16 @@ extension CarSummaryViewController: UITableViewDataSource {
         }
     }
 
+// MARK: - TableView Delegate Methods
+
 extension CarSummaryViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath
+        
+        tableView.beginUpdates()
+        tableView.reloadRows(at: [selectedIndex], with: .none)
+        tableView.endUpdates()
         
     }
 }

@@ -14,6 +14,8 @@ struct CarViewModel {
         data = loadJson(forName: "car_list")
     }
     
+    // Method to load json from local file and to parse the json
+    
     func loadJson(forName name: String) -> [Cars]? {
         if let url = Bundle.main.url(forResource: name, withExtension: "json") {
             do {
