@@ -19,6 +19,7 @@ class CarSummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        setupTableHeaderView()
         setupNavigationBar()
     }
 }
@@ -64,6 +65,16 @@ extension CarSummaryViewController {
             
             navigationBar.addSubview(firstLabel)
         }
+    }
+    
+    private func setupTableHeaderView() {
+        let header = CarHeaderView(frame: .zero)
+        
+        var size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        size.width = UIScreen.main.bounds.width
+        header.frame.size = size
+        
+        tableView.tableHeaderView = header
     }
 }
 
