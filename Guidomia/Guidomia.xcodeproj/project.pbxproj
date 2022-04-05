@@ -18,6 +18,7 @@
 		73A0F72127FBFAA500B517C7 /* CarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A0F72027FBFAA500B517C7 /* CarViewModel.swift */; };
 		73A0F72327FBFAFF00B517C7 /* CarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A0F72227FBFAFF00B517C7 /* CarHeaderView.xib */; };
 		73A0F79C27FCDB5100B517C7 /* car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 73A0F79B27FCDB5100B517C7 /* car_list.json */; };
+		73A0F7A127FCEC5000B517C7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A0F7A027FCEC5000B517C7 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		73A0F72027FBFAA500B517C7 /* CarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarViewModel.swift; sourceTree = "<group>"; };
 		73A0F72227FBFAFF00B517C7 /* CarHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarHeaderView.xib; sourceTree = "<group>"; };
 		73A0F79B27FCDB5100B517C7 /* car_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = car_list.json; path = "../../../Downloads/expandabletableviewcell-master/DropdownExpandableTBCell/car_list.json"; sourceTree = "<group>"; };
+		73A0F7A027FCEC5000B517C7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				73A0F71527FBFA1200B517C7 /* ViewModel */,
 				73A0F6B427FB6EAF00B517C7 /* View */,
 				73A0F6B527FB6EB800B517C7 /* View Controller */,
+				73A0F79F27FCEC3E00B517C7 /* Extensions */,
 				73A0F6AA27FB690800B517C7 /* LaunchScreen.storyboard */,
 				73A0F6A827FB690800B517C7 /* Assets.xcassets */,
 				73A0F6AD27FB690800B517C7 /* Info.plist */,
@@ -128,6 +131,14 @@
 				73A0F71A27FBFA6A00B517C7 /* CarCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		73A0F79F27FCEC3E00B517C7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				73A0F7A027FCEC5000B517C7 /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +216,7 @@
 				73A0F71927FBFA5B00B517C7 /* CarHeaderView.swift in Sources */,
 				73A0F72127FBFAA500B517C7 /* CarViewModel.swift in Sources */,
 				73A0F6A427FB690600B517C7 /* CarSummaryViewController.swift in Sources */,
+				73A0F7A127FCEC5000B517C7 /* Extensions.swift in Sources */,
 				73A0F71F27FBFA9800B517C7 /* CarImages.swift in Sources */,
 				73A0F71D27FBFA8900B517C7 /* Cars.swift in Sources */,
 				73A0F71B27FBFA6A00B517C7 /* CarCell.swift in Sources */,
