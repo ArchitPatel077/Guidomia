@@ -10,7 +10,6 @@ import UIKit
 
 class CarCell: UITableViewCell {
     
-    
     let carImage = UIImageView()
     let carName = UILabel()
     let carPrice = UILabel()
@@ -101,6 +100,7 @@ extension CarCell {
         prosList.textColor = .black
         prosList.adjustsFontSizeToFitWidth = true
         prosList.numberOfLines = 4
+        prosList.lineBreakMode = .byTruncatingTail
         
         // Cons Label
         consLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -108,6 +108,7 @@ extension CarCell {
         consLabel.textAlignment = .left
         consLabel.text = "Cons:"
         consLabel.textColor = UIColor(named: "carDarkGreyColor")
+        
         
         //Cons List
         consList.translatesAutoresizingMaskIntoConstraints = false
@@ -117,6 +118,7 @@ extension CarCell {
         consList.textColor = .black
         consList.adjustsFontSizeToFitWidth = true
         consList.numberOfLines = 4
+        prosList.lineBreakMode = .byTruncatingTail
         
         // Vertical stack for car pros and cons
         carDetailsStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -203,7 +205,7 @@ extension CarCell {
         
         guard let carProsList = car?.prosList.filter({$0.isEmpty == false}) else {return}
         prosList.attributedText = NSAttributedString().displayBulletedText(for:carProsList)
-        print(NSAttributedString().displayBulletedText(for: carProsList))
+       
         guard let carConsList = car?.consList.filter({$0.isEmpty == false}) else {return}
         consList.attributedText = NSAttributedString().displayBulletedText(for: carConsList)
     }

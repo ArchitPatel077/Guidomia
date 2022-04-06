@@ -16,9 +16,10 @@
 		73A0F71D27FBFA8900B517C7 /* Cars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A0F71C27FBFA8900B517C7 /* Cars.swift */; };
 		73A0F71F27FBFA9800B517C7 /* CarImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A0F71E27FBFA9800B517C7 /* CarImages.swift */; };
 		73A0F72127FBFAA500B517C7 /* CarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A0F72027FBFAA500B517C7 /* CarViewModel.swift */; };
-		73A0F79C27FCDB5100B517C7 /* car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 73A0F79B27FCDB5100B517C7 /* car_list.json */; };
 		73A0F7A127FCEC5000B517C7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A0F7A027FCEC5000B517C7 /* Extensions.swift */; };
 		73A0F7A327FCF02300B517C7 /* CarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A0F7A227FCF02300B517C7 /* CarHeaderView.xib */; };
+		73A0F7D127FD5CE000B517C7 /* car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 73A0F7D027FD5CE000B517C7 /* car_list.json */; };
+		73A0F7DF27FDF7FA00B517C7 /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A0F7DE27FDF7FA00B517C7 /* Extension + UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +34,10 @@
 		73A0F71C27FBFA8900B517C7 /* Cars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cars.swift; sourceTree = "<group>"; };
 		73A0F71E27FBFA9800B517C7 /* CarImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarImages.swift; sourceTree = "<group>"; };
 		73A0F72027FBFAA500B517C7 /* CarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarViewModel.swift; sourceTree = "<group>"; };
-		73A0F79B27FCDB5100B517C7 /* car_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = car_list.json; path = "../../../Downloads/expandabletableviewcell-master/DropdownExpandableTBCell/car_list.json"; sourceTree = "<group>"; };
 		73A0F7A027FCEC5000B517C7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		73A0F7A227FCF02300B517C7 /* CarHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CarHeaderView.xib; path = "../../../../Guidomia Header view/Guidomia Header view/View/CarHeaderView.xib"; sourceTree = "<group>"; };
+		73A0F7D027FD5CE000B517C7 /* car_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = car_list.json; path = ../../../../.Trash/car_list.json; sourceTree = "<group>"; };
+		73A0F7DE27FDF7FA00B517C7 /* Extension + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				73A0F69E27FB690600B517C7 /* Guidomia */,
-				73A0F79B27FCDB5100B517C7 /* car_list.json */,
 				73A0F69D27FB690600B517C7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,10 +75,11 @@
 				73A0F71527FBFA1200B517C7 /* ViewModel */,
 				73A0F6B427FB6EAF00B517C7 /* View */,
 				73A0F6B527FB6EB800B517C7 /* View Controller */,
-				73A0F79F27FCEC3E00B517C7 /* Extensions */,
+				73A0F79F27FCEC3E00B517C7 /* Extensions + AttrString */,
 				73A0F6AA27FB690800B517C7 /* LaunchScreen.storyboard */,
 				73A0F6A827FB690800B517C7 /* Assets.xcassets */,
 				73A0F6AD27FB690800B517C7 /* Info.plist */,
+				73A0F7D027FD5CE000B517C7 /* car_list.json */,
 			);
 			path = Guidomia;
 			sourceTree = "<group>";
@@ -133,12 +135,13 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		73A0F79F27FCEC3E00B517C7 /* Extensions */ = {
+		73A0F79F27FCEC3E00B517C7 /* Extensions + AttrString */ = {
 			isa = PBXGroup;
 			children = (
 				73A0F7A027FCEC5000B517C7 /* Extensions.swift */,
+				73A0F7DE27FDF7FA00B517C7 /* Extension + UIView.swift */,
 			);
-			path = Extensions;
+			path = "Extensions + AttrString";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,8 +204,8 @@
 			files = (
 				73A0F7A327FCF02300B517C7 /* CarHeaderView.xib in Resources */,
 				73A0F6AC27FB690800B517C7 /* LaunchScreen.storyboard in Resources */,
-				73A0F79C27FCDB5100B517C7 /* car_list.json in Resources */,
 				73A0F6A927FB690800B517C7 /* Assets.xcassets in Resources */,
+				73A0F7D127FD5CE000B517C7 /* car_list.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +221,7 @@
 				73A0F6A427FB690600B517C7 /* CarSummaryViewController.swift in Sources */,
 				73A0F7A127FCEC5000B517C7 /* Extensions.swift in Sources */,
 				73A0F71F27FBFA9800B517C7 /* CarImages.swift in Sources */,
+				73A0F7DF27FDF7FA00B517C7 /* Extension + UIView.swift in Sources */,
 				73A0F71D27FBFA8900B517C7 /* Cars.swift in Sources */,
 				73A0F71B27FBFA6A00B517C7 /* CarCell.swift in Sources */,
 				73A0F6A027FB690600B517C7 /* AppDelegate.swift in Sources */,
