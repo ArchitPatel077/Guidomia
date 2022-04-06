@@ -6,22 +6,34 @@
 //
 
 import UIKit
+import DropDown
 
 class CarSummaryViewController: UIViewController {
     
-   //let images = ["alpine_roadster", "BMW_330i", "Mercedez_benz_GLC", "Range_Rover"]
     
     var tableView = UITableView()
     var viewModel = CarViewModel()
+    var pickerView = UIPickerView()
     
     let contentView = UIView()
     let filterView = UIView()
     let imageView = UIImageView()
-    let filterStackView = UIStackView()
+    
     
     let filterLabel = UILabel()
-    let makeTF: UITextField = UITextField(frame: CGRect(x: 0, y: 320, width: 200, height: 30.00))
-    let modelTF = UITextField(frame: CGRect(x: 0, y: 320, width: 300.00, height: 30.00))
+    let makeTF = UIView()
+    let makeLabel = UILabel()
+    let makeButton = UIButton()
+    let modelTF = UIView()
+    let modelLabel = UILabel()
+    let modelButton = UIButton()
+    
+    let makeDD = DropDown()
+    let modelDD = DropDown()
+
+    var carsMake = ["Land Rover", "Alpine", "BMW", "Mercedes Benz"]
+    var carsModel = ["Range Rover", "Roadster", "3300i", "GLE coupe"]
+
     
     var selectedIndex: IndexPath = IndexPath(row: 0, section: 0)
 
@@ -30,8 +42,11 @@ class CarSummaryViewController: UIViewController {
         setup()
 //        setupTableHeaderView()
         setupNavigationBar()
+        setupDropDown()
     }
 }
+
+    
 
 
 // MARK: - TableView DataSource Methods
@@ -145,33 +160,51 @@ extension CarSummaryViewController {
         filterView.backgroundColor = UIColor(named: "carLightGreyColor")
         filterView.layer.cornerRadius = 10
         
-        filterStackView.translatesAutoresizingMaskIntoConstraints = false
-        filterStackView.axis = .vertical
-        filterStackView.spacing = 2
-      
-        
         filterLabel.translatesAutoresizingMaskIntoConstraints = false
         filterLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         filterLabel.textColor = UIColor(named: "carDarkGreyColor")
         filterLabel.text = "Filter :"
         
         makeTF.translatesAutoresizingMaskIntoConstraints = false
-        makeTF.placeholder = "Make"
-        makeTF.borderStyle = UITextField.BorderStyle.roundedRect
         makeTF.backgroundColor = .white
-        makeTF.textColor = UIColor(named: "carDarkGreyColor")
+        makeTF.layer.cornerRadius = 10
+        makeTF.layer.borderColor = UIColor.black.cgColor
+        makeTF.layer.borderWidth = 1
+        
+        makeLabel.translatesAutoresizingMaskIntoConstraints = false
+        makeLabel.textColor = UIColor(named: "carDarkGreyColor")
+        makeLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        makeLabel.text = "Make"
+        
+        makeButton.translatesAutoresizingMaskIntoConstraints = false
+        makeButton.setTitle(" ", for: .normal)
+        makeButton.layer.cornerRadius = 10
+        makeButton.addTarget(self, action: #selector(makeButtonPressed), for: .touchUpInside)
         
         modelTF.translatesAutoresizingMaskIntoConstraints = false
-        modelTF.placeholder = "Model"
-        modelTF.borderStyle = UITextField.BorderStyle.roundedRect
         modelTF.backgroundColor = .white
-        modelTF.textColor = UIColor(named: "carDarkGreyColor")
+        modelTF.layer.cornerRadius = 10
+        modelTF.layer.borderColor = UIColor.black.cgColor
+        modelTF.layer.borderWidth = 1
         
-        filterStackView.addArrangedSubview(filterLabel)
-        filterStackView.addArrangedSubview(makeTF)
-        filterStackView.addArrangedSubview(modelTF)
+        modelLabel.translatesAutoresizingMaskIntoConstraints = false
+        modelLabel.textColor = UIColor(named: "carDarkGreyColor")
+        modelLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        modelLabel.text = "Model"
         
-        filterView.addSubview(filterStackView)
+        modelButton.translatesAutoresizingMaskIntoConstraints = false
+        modelButton.setTitle(" ", for: .normal)
+        modelButton.layer.cornerRadius = 10
+        modelButton.addTarget(self, action: #selector(modelButtonPressed), for: .touchUpInside)
+        
+        makeTF.addSubview(makeLabel)
+        makeTF.addSubview(makeButton)
+        modelTF.addSubview(modelLabel)
+        modelTF.addSubview(modelButton)
+        
+        filterView.addSubview(filterLabel)
+        filterView.addSubview(makeTF)
+        filterView.addSubview(modelTF)
         
         contentView.addSubview(imageView)
         contentView.addSubview(filterView)
@@ -206,16 +239,103 @@ extension CarSummaryViewController {
             filterView.widthAnchor.constraint(equalToConstant: 348)
         ])
         
-        //filterStackview
+        //filterLabel
         NSLayoutConstraint.activate([
-            
-            filterStackView.topAnchor.constraint(equalTo: filterView.topAnchor, constant: 10),
-            filterStackView.leadingAnchor.constraint(equalTo: filterView.leadingAnchor, constant: 20)
-            
+            filterLabel.topAnchor.constraint(equalTo: filterView.topAnchor, constant: 10),
+            filterLabel.leadingAnchor.constraint(equalTo: filterView.leadingAnchor, constant: 20)
+        ])
+     
+        //makeTF
+        NSLayoutConstraint.activate([
+            makeTF.topAnchor.constraint(equalToSystemSpacingBelow: filterLabel.bottomAnchor, multiplier: 1),
+            makeTF.leadingAnchor.constraint(equalTo: filterView.leadingAnchor, constant: 20),
+            makeTF.widthAnchor.constraint(equalToConstant: 300),
+            makeTF.heightAnchor.constraint(equalToConstant: 30)
         ])
         
+        //makeLabel
+        NSLayoutConstraint.activate([
+            makeLabel.topAnchor.constraint(equalTo: makeTF.topAnchor, constant: 2),
+            makeLabel.leadingAnchor.constraint(equalTo: makeTF.leadingAnchor, constant: 3)
+        ])
+        
+        //makeButton
+        NSLayoutConstraint.activate([
+            makeButton.topAnchor.constraint(equalTo: makeTF.topAnchor),
+            makeButton.leadingAnchor.constraint(equalTo: makeTF.leadingAnchor),
+            makeButton.widthAnchor.constraint(equalToConstant: 300),
+            makeButton.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        //modelTF
+        NSLayoutConstraint.activate([
+            modelTF.topAnchor.constraint(equalToSystemSpacingBelow: makeTF.bottomAnchor, multiplier: 1),
+            modelTF.leadingAnchor.constraint(equalTo: filterView.leadingAnchor, constant: 20),
+            modelTF.widthAnchor.constraint(equalToConstant: 300),
+            modelTF.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        //modelLabel
+        NSLayoutConstraint.activate([
+            modelLabel.topAnchor.constraint(equalTo: modelTF.topAnchor, constant: 2),
+            modelLabel.leadingAnchor.constraint(equalTo: modelTF.leadingAnchor, constant: 3)
+        ])
+               
+        //modelButton
+        NSLayoutConstraint.activate([
+            modelButton.topAnchor.constraint(equalTo: modelTF.topAnchor),
+            modelButton.leadingAnchor.constraint(equalTo: modelTF.leadingAnchor),
+            modelButton.widthAnchor.constraint(equalToConstant: 300),
+            modelButton.heightAnchor.constraint(equalToConstant: 30)
+        ])
+    }
+}
+
+// MARK: - Actions
+extension CarSummaryViewController {
+    
+    @objc func makeButtonPressed() {
+        makeDD.show()
     }
     
+    @objc func modelButtonPressed() {
+        modelDD.show()
+    }
 }
 
 
+// MARK: - Dropdown setup
+
+extension CarSummaryViewController {
+    
+    private func setupDropDown() {
+        
+        // Make dropDown
+        makeDD.anchorView = makeTF
+        makeDD.dataSource = carsMake
+
+        // Action triggered on selection
+        makeDD.selectionAction = { [unowned self] (index: Int, item: String) in
+          print("Selected item: \(item) at index: \(index)")
+            self.makeLabel.text = carsMake[index]
+        }
+        makeDD.bottomOffset = CGPoint(x: 0, y:(makeDD.anchorView?.plainView.bounds.height)!)
+        makeDD.topOffset = CGPoint(x: 0, y:-(makeDD.anchorView?.plainView.bounds.height)!)
+        makeDD.direction = .bottom
+        
+        
+        //Model Dropdown
+        modelDD.anchorView = modelTF
+        modelDD.dataSource = carsModel
+
+        // Action triggered on selection
+        modelDD.selectionAction = { [unowned self] (index: Int, item: String) in
+          print("Selected item: \(item) at index: \(index)")
+            self.modelLabel.text = carsModel[index]
+        }
+        modelDD.bottomOffset = CGPoint(x: 0, y:(makeDD.anchorView?.plainView.bounds.height)!)
+        modelDD.topOffset = CGPoint(x: 0, y:-(makeDD.anchorView?.plainView.bounds.height)!)
+        modelDD.direction = .bottom
+    }
+    
+}

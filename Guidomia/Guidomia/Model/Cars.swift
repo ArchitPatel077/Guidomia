@@ -7,6 +7,14 @@
 
 import UIKit
 
+struct CarsMakeAndModel: Codable {
+    var make: String
+    var model: String
+    func carList() -> String {
+        return make
+    }
+}
+
 struct Cars: Codable {
     
     var consList: [String]
@@ -53,4 +61,6 @@ struct Cars: Codable {
         }
         return star
     }
+
 }
+

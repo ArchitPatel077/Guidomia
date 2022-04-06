@@ -31,7 +31,6 @@ class CarCell: UITableViewCell {
             displayCarList()
         }
     }
-    
   
     // Reuse identifier for tableview cell
     static let reuseID = "AccountCell"
